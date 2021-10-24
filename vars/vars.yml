@@ -1,0 +1,6 @@
+ec2_access_key: ACCESSKEY
+ec2_secret_key: "SECRETKEY"
+ec2_security_group: aapsystems
+ec2_key: YOURKEY
+ec2_region: eu-central-1
+ami_id: ami-06ec8443c2a35b0ba
