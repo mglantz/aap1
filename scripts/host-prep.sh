@@ -1,9 +1,6 @@
 #!/bin/bash
 # Prepare host for installation
 
-# Update system to latest
-dnf update -y
-
 # Enable RHSM management
 sed -i -e 's/manage_repos = 0/manage_repos = 1/g' /etc/rhsm/rhsm.conf
 
@@ -17,5 +14,9 @@ subscription-manager register --username=THEUSER --password="THEPASSWORD" --auto
 # Enable AAP pool id
 subscription-manager attach --pool=THEPOOL
 
-# Reboot to latest versions
-reboot
+# Enable Ansible 2.9
+subscription-manager repos --enable=ansible-2.9-for-rhel-8-x86_64-rpms
+
+# Update system to latest versions and reboot if successful
+dnf clean all
+dnf update -y && reboot
